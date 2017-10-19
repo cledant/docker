@@ -1,0 +1,2 @@
+docker pull 42school/marine-squad
+docker service create --name marines --network overmind -d -e OC_USERNAME=Jim -e OC_PASSWD=Hyperion --replicas 2 42school/marine-squad
