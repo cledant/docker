@@ -3,8 +3,8 @@ FROM 		debian:latest
 RUN 		apt-get update && apt-get upgrade \
 			&& apt-get install -y git \
 			&& apt-get install -y wget \
-			&& apt-get install -y mysql-server \
 			&& adduser --disabled-login --gecos 'Gogs' git
+
 USER		git
 RUN			cd ~ \
 			&& mkdir local \
@@ -12,6 +12,7 @@ RUN			cd ~ \
 			&& wget https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz \
 			&& tar -C /home/git/local -xzf go1.9.1.linux-amd64.tar.gz \
 			&& rm -rf go1.9.1.linux-amd64.tar.gz \
+
 USER		git
 ENV 		HOME /home/git
 ENV 		GOROOT $HOME/local/go
@@ -21,8 +22,9 @@ RUN			cd ~ \
 			&& mkdir -p $GOPATH/src/github.com/gogits \
 			&& cd $GOPATH/src/github.com/gogits \
 			&& git clone --depth=1 -b develop https://github.com/gogits/gogs \
+			&& go get -u tags "sqlite" github.com/gogits/gogs \
 			&& cd gogs \
-			&& go build
+			&& go build -tags "sqlite"
 
 VOLUME 		~/go/src/github.com/gogits/gogs
 
