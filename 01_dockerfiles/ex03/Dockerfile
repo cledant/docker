@@ -27,10 +27,12 @@ RUN			cd ~ \
 			&& cd gogs \
 			&& go build -tags "sqlite"
 
-VOLUME 		~/
+USER		root
+RUN			mkdir /data \
+			&& chown git:git /data
 
-WORKDIR 	~/go/src/github.com/gogits/gogs
-
+USER		git
+WORKDIR 	/
 ENV			USER git
 ENV			USERNAME git
 ENTRYPOINT  ~/go/src/github.com/gogits/gogs/gogs web
