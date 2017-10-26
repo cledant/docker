@@ -11,5 +11,6 @@ ONBUILD RUN			gem install rails
 ONBUILD RUN			bundle install
 ONBUILD ADD 		. /opt/app
 ONBUILD RUN			rails db:migrate
+ONBUILD RUN			rails db:seed
 
 EXPOSE				3000
