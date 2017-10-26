@@ -1,2 +1,1 @@
-docker-machine ssh Char
 docker rmi -f `docker images --format {{.ID}}`

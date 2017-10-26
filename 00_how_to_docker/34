@@ -1,1 +1,1 @@
-docker-machine rm Aiur
+docker-machine rm Aiur -y
