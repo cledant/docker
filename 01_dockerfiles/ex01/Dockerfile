@@ -17,8 +17,6 @@ EXPOSE 9987/udp 10011 30033
 
 USER ts3
 
-VOLUME /opt/teamspeak3-server_linux_amd64
-
 WORKDIR /opt/teamspeak3-server_linux_amd64
 
 ENTRYPOINT /opt/scripts/run_server.sh
