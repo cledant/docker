@@ -2,7 +2,7 @@ FROM debian:stretch
 
 COPY scripts /opt/scripts
 
-RUN apt-get update && apt-get upgrade \
+RUN apt-get update && apt-get upgrade -y \
 	&& DEBIAN_FRONTEND=noninteractive apt-get install -y wget bzip2 \
 	&& useradd -M -s /bin/false --uid 1000 ts3 \
 	&& cd /opt \
